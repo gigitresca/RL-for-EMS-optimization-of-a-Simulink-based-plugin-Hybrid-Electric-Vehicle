@@ -1,0 +1,10 @@
+{
+  "agent_name": "DQN",
+  "parameters": {
+    "n_nodes_base_cr": 32,
+    "lr_cr": 0.001
+  },
+  "max_episodes": 6000,
+  "sample_time": 1,
+  "cycle_time": 6000
+}

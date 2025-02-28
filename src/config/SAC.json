@@ -1,0 +1,16 @@
+{
+  "agent_name": "SAC",
+  "parameters": {
+    "n_nodes_base_act": 32,
+    "n_nodes_base_cr": 32,
+    "lr_act": 0.000006,
+    "lr_cr1": 0.0001,
+    "lr_cr2": 0.0001,
+    "ent_wgt": 6,
+    "ent_trg": -1,
+    "ent_lr": 0.001
+  },
+  "max_episodes": 500,
+  "sample_time": 1,
+  "cycle_time": 6000
+}
