@@ -1,6 +1,6 @@
 # RL-for-EMS-optimization-of-a-Simulink-based-plugin-Hybrid-Electric-Vehicle
 
-Official implementation of the journal paper [A Cutting-Edge Energy Management System for a Hybrid Electric Vehicle relying on Soft Actor-Critic Deep Reinforcement Learning]([https://www.sciencedirect.com/science/article/pii/S2666691X25000089])
+Official implementation of the journal paper [A Cutting-Edge Energy Management System for a Hybrid Electric Vehicle relying on Soft Actor-Critic Deep Reinforcement Learning](https://www.sciencedirect.com/science/article/pii/S2666691X25000089)
 published on *Transportation Engineering* in February 2025.
 
 <img align="center" src="figures/readme/graphical_abstract.png" width="1500"/></td> <br/>
