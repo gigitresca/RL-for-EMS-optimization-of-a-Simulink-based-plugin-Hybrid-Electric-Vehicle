@@ -5,7 +5,7 @@ published on *Transportation Engineering* in February 2025.
 
 <img align="center" src="figures/readme/graphical_abstract.png" width="1500"/></td> <br/>
 
-This repository provides the code and methodology for setting up and training a Soft-Actor Critic (SAC) and a Deep Q-Learning (DQN) Reinforcement Learning (RL) agent to optimize the energy management of a plug-in Hybrid Electric Vehicle (HEV). The implementation is built using MATLAB for the agent setting, training and testing, while the vehicle environment has been developed in Simulink.
+This repository provides the code and methodology for setting up and training a Soft-Actor Critic (SAC) and a Deep Q-Learning (DQN) Reinforcement Learning (RL) agent to optimize the energy management of a plug-in Hybrid Electric Vehicle (HEV). The implementation is built using MATLAB for the agent setting, training and testing, while two vehicle environments are available: one using an object-oriented programming approach in MATLAB, and the other in Simulink.
 
 The repository includes detailed explanations and modular code for:
 
@@ -29,8 +29,8 @@ The repository is structured in the following way:
 `RL-for-EMS-optimization-of-a-Simulink-based-plugin-Hybrid-Electric-Vehicle`  
 `├── testing.m`: test pre-trained RL agents <br>
 `├── train.m`: main file for training RL agents <br>
-`├── src/`  
-`    ├── algos/`  
+`├── src/`<br>
+`    ├── algos/`<br>
 `        ├── SAC.m`: SAC agent definition with all parameters<br>
 `        ├── DQN.m`: DQN agent definition with all parameters<br>
 `        ├── ActorGaussianNet.m`: Gaussian-based policy parameterization for SAC actor<br>
@@ -41,13 +41,13 @@ The repository is structured in the following way:
 `        ├── DQN.json`: parameters for the DQN agent<br>
 `        ├── SAC.json`: parameters for the SAC agent<br>
 `        └── env.py`: parameters for the vehicle environment<br>
-`    ├── envs/`:
+`    ├── envs/`<br>
 `        ├── SimulinkModelImages/`: images for the Simulink blocks<br>
 `        ├── VehicleObjects/`: classes for each physical component of the vehicle, for the reward and states normalization<br>
 `        ├── VehicleBackKinEnv.m`: backward kinematic model environment class, wrapped from MATLABEnvironment <br>
 `        └── VehicleBackKin.slx`: Simulink-based backward kinematic model of the pHEV<br>
 `    ├── utilities/`: helper functions<br>
-`├── data/`:
+`├── data/`<br>
 `    ├── training_cycles.xlsx`: Excel file with training/testing driving cycles<br>
 `    ├── vehicle_data.xlsx`: Excel file with vehicle parameters for the case study<br>
 `    ├── DrivingCycleObjects.mat`: mat file with post-processed driving cycles from training_cycles.xlsx<br>
@@ -117,7 +117,7 @@ To test a pre-trained agent, follow these steps:
 - Select a driving cycle from the available options.
 - After the simulation, plots displaying key vehicle quantities (e.g., SoC, ICE power) will be generated.
 
-### Modifying Additional Agent Parameters
+### Change additional agent parameters
 
 To change parameters that are not specified in the configuration JSON file, you must modify the agent class directly. For example, to adjust parameters for the SAC agent:
 - Open the `src/algos/SAC.m` file.
@@ -130,7 +130,7 @@ To change parameters that are not specified in the configuration JSON file, you 
   
 The same approach applies to modifying parameters for the DQN agent.
 
-### Changing Vehicle Parameters
+### Change vehicle parameters
 
 To change vehicle parameters:
 - Delete the file `data/VehicleComponentsObjects.mat`.
@@ -138,3 +138,12 @@ To change vehicle parameters:
 - Regenerate the file `data/VehicleComponentsObjects.mat` by running the main training script.
 
 The same process applies if you wish to add or modify driving cycles.
+
+### Add new agents
+
+To add new agents:
+- Create a new agent class in `src/algos/`, following the same structure as the existing agent classes.
+- (Optional) If your agent needs specific policy or value networks, add the corresponding class in `src/algos/`.
+- Add a configuration file for your new agent in `src/config/`.
+- Update the switch statement in `src/utilities/getAgent.m` by adding a new case for your agent.
+- Include the agent’s name in the *Load configuration* section of both `training.m` and `testing.m`.
