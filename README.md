@@ -147,3 +147,15 @@ To add new agents:
 - Add a configuration file for your new agent in `src/config/`.
 - Update the switch statement in `src/utilities/getAgent.m` by adding a new case for your agent.
 - Include the agent’s name in the *Load configuration* section of both `training.m` and `testing.m`.
+
+### Add new reward
+To add a customized reward:
+- Implement your computations in the `src/envs/VehicleObjects/RewardRL.m` script.
+- Register the new reward name in the *Load config* file section of `src/utilities/getEnv.m` to ensure it's recognized.
+- For the Simulink environment, create a corresponding subsystem within the `VehicleBackKin/Reinforcement Learning controller/Reward` variant subsystem in `src/envs/VehicleBackKin.slx`
+
+## Conclusion
+
+This repository provides a comprehensive framework for training and testing reinforcement learning agents to optimize the energy management of a Simulink-based plug-in Hybrid Electric Vehicle. With ready-to-use SAC and DQN implementations, a modular environment setup, and clear instructions for extending agents, rewards, and vehicle parameters, the codebase is designed for flexibility and ease of customization.
+Thank you for your interest in this project! We welcome contributions from the community to contribute to the development of this project.
+Feel free to open issues, suggest improvements, or submit pull requests to help expand and enhance this repository. 🚀
